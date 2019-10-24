@@ -1,0 +1,21 @@
+// mixins
+
+@mixin robotobold {
+    font-family: 'Roboto-Bold', sans-serif;
+    font-weight: 800;
+}
+
+@mixin robotomed {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-weight: 600;
+}
+
+@mixin robotoreg {
+    font-family: 'Roboto-Regular', sans-serif;
+    font-weight: 300;
+}
+
+@mixin latobold {
+    font-family: 'Lato-Bold', sans-serif;
+    font-weight: 800;
+}

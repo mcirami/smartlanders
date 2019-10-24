@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: block;
+    line-height: 2.4rem;
+    height: 100%;
+}
+
+.page_wrapper {
+    background: $lightGray;
+    padding-top: 100px;
+    height: 100%;
+
+    @include media($mobile) {
+        padding-top: 50px;
+    }
+}

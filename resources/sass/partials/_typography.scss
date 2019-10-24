@@ -1,0 +1,47 @@
+// typography baselines and @font face setups
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('/fonts/roboto-bold-webfont.eot');
+    src: url('/fonts/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/roboto-bold-webfont.woff2') format('woff2'), url('/fonts/roboto-bold-webfont.woff') format('woff'), url('/fonts/roboto-bold-webfont.ttf') format('truetype'), url('/fonts/roboto-bold-webfont.svg#roboto-bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('/fonts/roboto-medium-webfont.eot');
+    src: url('/fonts/roboto-medium-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/roboto-medium-webfont.woff2') format('woff2'), url('/fonts/roboto-medium-webfont.woff') format('woff'), url('/fonts/roboto-medium-webfont.ttf') format('truetype'), url('/fonts/roboto-medium-webfont.svg#roboto-medium') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('/fonts/roboto-regular-webfont.eot');
+    src: url('/fonts/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/roboto-regular-webfont.woff2') format('woff2'), url('/fonts/roboto-regular-webfont.woff') format('woff'), url('/fonts/roboto-regular-webfont.ttf') format('truetype'), url('/fonts/roboto-regular-webfont.svg#roboto-regular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('/fonts/lato-bold-webfont.eot');
+    src: url('/fonts/lato-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/lato-bold-webfont.woff2') format('woff2'), url('/fonts/lato-bold-webfont.woff') format('woff'), url('/fonts/lato-bold-webfont.ttf') format('truetype'), url('/fonts/lato-bold-webfont.svg#lato-bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, input {
+    @include robotoreg;
+}
+
+h2 {
+    @include robotobold;
+}
+
+h3, label {
+    @include robotomed;
+}
+
+
