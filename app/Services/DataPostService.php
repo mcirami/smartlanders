@@ -7,32 +7,38 @@ namespace App\Services;
 use App\Data;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Http\Request;
 
 class DataPostService {
 
-    public function postOPTUser($request) {
+    public $email, $firstName, $lastName, $clickID, $affID, $userIP;
 
-        $email = $request['email'];
-        $firstName = $request['first_name'];
-        $lastName = $request['last_name'];
-        $clickID = Redis::get('clickid');
-        $affID = Redis::get('affid');
-        $userIP = Redis::get('ip');
+    public function __construct(Request $request) {
+
+        $this->email = $request['email'];
+        $this->firstName = $request['first_name'];
+        $this->lastName = $request['last_name'];
+        $this->clickID = Redis::get('clickid');
+        $this->affID = Redis::get('affid');
+        $this->userIP = Redis::get('ip');
+    }
+
+    public function postOPTUser() {
 
         $siteURL = "https://onlineplaytime.com";
-        $endpointUrl = "/api/signup?email=" . $email . "&period=0&clickid=" . $clickID . "&custid=&invoiceid=&cardhash=&LeadIPAddress=" . $userIP . "&h=1&affid=". $affID . "&firstname=" . $firstName . "&lastname=" . $lastName;
+        $endpointUrl = "/api/signup?email=" . $this->email . "&period=0&clickid=" . $this->clickID . "&custid=&invoiceid=&cardhash=&LeadIPAddress=" . $this->userIP . "&h=1&affid=". $this->affID . "&firstname=" . $this->firstName . "&lastname=" . $this->lastName;
 
         $client = new Client();
         $response = $client->request('GET', $siteURL . $endpointUrl, [
             'form_params' => [
-                'email'          => $email,
+                'email'          => $this->email,
                 'period'         => 0,
-                'clickid'        => $clickID,
-                'LeadIPAddress'  => $userIP,
+                'clickid'        => $this->clickID,
+                'LeadIPAddress'  => $this->userIP,
                 'h'              => 1,
-                'affid'          => $affID,
-                'firstname'      => $firstName,
-                'lastname'       => $lastName
+                'affid'          => $this->affID,
+                'firstname'      => $this->firstName,
+                'lastname'       => $this->lastName
             ]
         ]);
 
@@ -61,43 +67,36 @@ class DataPostService {
             ]
         ]);
 
-        $response =  $response->getBody()->getContents();
-
         Data::create([
             'type' => 'sms',
-            'response' => $response
+            'response' => $response->getBody()->getContents()
         ]);
 
     }
 
-    public function postRelevance($request) {
+    public function postRelevance() {
 
         $leadURL = Redis::get('actualLink');
         $leadDate =  date("m-d-Y-h:i:sa");
         $userIP = Redis::get('ip');
-        $email = $request['email'];
-        $firstName = $request['first_name'];
-        $lastName = $request['last_name'];
 
-        $endpointUrl = "http://api.rrddm.com/DDM/Import.cfc?method=submitRecord&ClientID=175&DataSourceID=17164&Token=C7F0T0K7Y9&TokenPassword=Z5F6D5&EmailAddress=" . $email . "&LeadDate=" . $leadDate . "&LeadURL=" . $leadURL . "&LeadIPAddress=" . $userIP . "&FirstName=" . $firstName . "&LastName=" . $lastName;
+        $endpointUrl = "http://api.rrddm.com/DDM/Import.cfc?method=submitRecord&ClientID=175&DataSourceID=17164&Token=C7F0T0K7Y9&TokenPassword=Z5F6D5&EmailAddress=" . $this->email . "&LeadDate=" . $leadDate . "&LeadURL=" . $leadURL . "&LeadIPAddress=" . $userIP . "&FirstName=" . $this->firstName . "&LastName=" . $this->lastName;
 
         $client = new Client();
         $response = $client->request('POST', $endpointUrl, [
             'form_params' => [
-                'email'         => $email,
-                'FirstName'     => $firstName,
-                'LastName'      => $lastName,
+                'email'         => $this->email,
+                'FirstName'     => $this->firstName,
+                'LastName'      => $this->lastName,
                 'LeadIPAddress' => $userIP,
                 'LeadDate'      => $leadDate,
                 'LeadURL'       => $leadURL
             ]
         ]);
 
-        $response =  $response->getBody()->getContents();
-
         Data::create([
             'type' => 'relevance',
-            'response' => $response
+            'response' => $response->getBody()->getContents()
         ]);
     }
 }

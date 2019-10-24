@@ -10,12 +10,12 @@ class RegisterController extends Controller
 {
     public function create(RegistrationRequest $request, UserService $user, DataPostService $post) {
 
-        $response = $post->postOPTUser($request);
+        $response = $post->postOPTUser();
 
         if ( $response[0] == '1' ) {
 
             $user->store($request);
-            $post->postRelevance($request);
+            $post->postRelevance();
             $post->postSMS($request['phone']);
 
             return redirect($response[1]);
