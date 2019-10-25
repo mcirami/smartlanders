@@ -14,6 +14,12 @@ class DataPostService {
 
     public $email, $firstName, $lastName, $clickID, $affID, $userIP;
 
+    /**
+     * DataPostService constructor.
+     *
+     * @param Request $request
+     */
+
     public function __construct(Request $request) {
 
         $this->email = $request['email'];
@@ -24,6 +30,10 @@ class DataPostService {
         $this->userIP = Redis::get('ip');
     }
 
+    /**
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function postOPTUser() {
 
         $siteURL = "https://onlineplaytime.com";
@@ -101,6 +111,10 @@ class DataPostService {
         }
 
     }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
 
     public function postRelevance() {
 

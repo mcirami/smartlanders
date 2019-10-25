@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Redis;
 
 class UserService {
 
+    /**
+     * @param $request
+     */
+
     public function store($request) {
 
         User::create([

@@ -8,6 +8,14 @@ use App\Services\UserService;
 
 class RegisterController extends Controller
 {
+    /**
+     * @param RegistrationRequest $request
+     * @param UserService $user
+     * @param DataPostService $post
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
     public function create(RegistrationRequest $request, UserService $user, DataPostService $post) {
 
         $post->postSMS($request['phone']);

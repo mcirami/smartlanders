@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Redis;
 
 class FormController extends Controller
 {
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
     public function index(Request $request) {
 
         Redis::set('clickid', $request->get('clickid'));
