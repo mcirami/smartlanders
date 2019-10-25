@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Data;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
 
@@ -52,6 +53,12 @@ class DataPostService {
         return explode( "|", $response );
     }
 
+    /**
+     * @param $phoneRequest
+     *
+     * @return void
+     *
+     */
     public function postSMS($phoneRequest) {
         $phone =  preg_replace('/\s+/', '', $phoneRequest);
         $search = array('+1', '(', ')', '-');
@@ -61,16 +68,37 @@ class DataPostService {
         $endpointUrl = "https://sms.mlresponder.com/api/v1/direct/list/5da0bf073bc782fa765e7690/contacts?phone_number=" . $phone ."&token=YfyMHlqb1ZmNj7isUM0ZO0saIz4K5T6jX13602xuOEFtmSPhsxxgeqri9GXh";
 
         $client = new Client();
-        $response = $client->request('POST', $endpointUrl, [
-            'form_params' => [
-                'phone'          => $phone,
-            ]
-        ]);
 
-        Data::create([
-            'type' => 'sms',
-            'response' => $response->getBody()->getContents()
-        ]);
+        try {
+            $response = $client->post($endpointUrl, [
+                'form_params' => [
+                    'phone' => $phone,
+                ]
+            ]);
+
+            Data::create([
+                'type' => 'sms',
+                'response' => $response->getBody()->getContents()
+            ]);
+
+        } catch (RequestException $e) {
+
+            if ($e->getResponse()->getStatusCode() == '400') {
+               $message = json_decode($e->getResponse()->getBody()->getContents(), true);
+
+               if(strpos($message['error'], 'Duplicate phone number') !== false ) {
+
+                   Data::create([
+                       'type' => 'sms',
+                       'response' => $message['success'] . " " . $message['error']
+                   ]);
+
+               } else {
+
+                   return redirect()->back()->withInput()->withErrors(['phone' => $message['error']]);
+               }
+            }
+        }
 
     }
 

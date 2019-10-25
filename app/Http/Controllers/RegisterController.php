@@ -10,21 +10,20 @@ class RegisterController extends Controller
 {
     public function create(RegistrationRequest $request, UserService $user, DataPostService $post) {
 
-        $response = $post->postOPTUser();
+        $post->postSMS($request['phone']);
 
-        if ( $response[0] == '1' ) {
+        $optResponse = $post->postOPTUser();
+
+        if ( $optResponse[0] == '1' ) {
 
             $user->store($request);
             $post->postRelevance();
-            $post->postSMS($request['phone']);
 
-            return redirect($response[1]);
-
-        } elseif ( $response[0] == '5' ) {
+        } elseif ( $optResponse[0] == '5' ) {
 
             return redirect()->back()->withInput()->withErrors(['email' => 'Email is already being use']);
 
-        } elseif ( $response[0] == '0' ) {
+        } elseif ( $optResponse[0] == '0' ) {
 
             return redirect()->back()->withInput()->withErrors(['fields' => 'The fields you entered are invalid']);
 
