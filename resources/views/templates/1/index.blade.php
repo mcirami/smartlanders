@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('templates.1.layouts.header')
 
 @section('content')
 
@@ -15,8 +15,8 @@
             @endif
         </div>
     </div>
-    <div class="row  main_form">
-        <form action="/create" class="col-12" id="form" method="post">
+    <div class="row opt_form">
+        <form action="/opt-create" class="col-12" id="form" method="post">
             {{ csrf_field() }}
             <div class="row">
                 <div class="box col-12 mb-4">
