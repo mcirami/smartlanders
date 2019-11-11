@@ -1,0 +1,495 @@
+.money_lovers {
+    line-height: 1.8;
+
+    .rounded-pill {
+        background: $MLGreen;
+        font-size: 22px;
+
+        @include media($mobile) {
+            font-size: 18px;
+        }
+
+        &:hover {
+            background: $MLDarkGreen;
+            color: $white;
+        }
+    }
+
+    #loginModal {
+        .modal-content {
+            background: $MLGreen;
+            color: $white;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+
+            .rounded-pill {
+                background: $pureBlack;
+                color: $white;
+            }
+        }
+        .close {
+            color: $white;
+        }
+    }
+
+    .ml_page_wrap {
+        padding-top: 120px;
+
+        @include media($mobile) {
+            padding-top: 80px;
+        }
+    }
+
+    p {
+        margin-bottom: 5px;
+
+        @include media($mobile) {
+            font-size: 14px;
+        }
+    }
+
+    header {
+        z-index: 999;
+        background: $pureBlack;
+
+        .navbar {
+            background: $pureBlack;
+
+            .container {
+                @include media($mobile) {
+                    max-width: 100%;
+                }
+            }
+
+            img {
+                @include media($mobile) {
+                    max-width: 130px;
+                }
+            }
+
+            .nav-link {
+                color: $white;
+
+                @include media($tablet) {
+                    font-size: 15px;
+                }
+
+                &:hover {
+                    color: $MLGreen;
+                }
+
+                &.nav-link.rounded-pill {
+                    font-size: 16px;
+
+                    @include media($tablet) {
+                        font-size: 15px;
+                    }
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+
+                &.active {
+                    color: $MLGreen;
+                }
+            }
+        }
+
+        .navbar-nav {
+            @include media($mobile) {
+                border-top: 1px solid #2d2d2d;
+            }
+
+            li {
+                @include media($mobile) {
+                    border-bottom: 1px solid #2d2d2d;
+                }
+            }
+        }
+
+        .mobile_menu_icon {
+            width: 30px;
+            height: 24px;
+            float: right;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            cursor: pointer;
+
+            span {
+                position: absolute;
+                height: 5px;
+                width: 100%;
+                background: $MLGreen;
+                border-radius: 9px;
+                opacity: 1;
+                left: 0;
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+                -webkit-transition: .25s ease-in-out;
+                -moz-transition: .25s ease-in-out;
+                -o-transition: .25s ease-in-out;
+                transition: .25s ease-in-out;
+
+                &:nth-child(1) {
+                    top: 1px;
+                }
+
+                &:nth-child(2) {
+                    top: 10px;
+                }
+
+                &:nth-child(3) {
+                    top: 19px;
+                }
+            }
+        }
+    }
+
+    .section {
+
+        h2 {
+            @include robotolight;
+            font-size: 48px;
+
+            @include media($tablet) {
+                font-size: 42px;
+            }
+
+            @include media($mobile) {
+                font-size: 34px;
+            }
+        }
+
+        h3 {
+            @include robotoreg;
+            font-size: 34px;
+
+            @include media($mobile) {
+                font-size: 26px;
+            }
+        }
+
+        h4 {
+            font-size: 18px;
+
+            @include media($mobile) {
+                font-size: 14px;
+            }
+
+            span, a {
+                @include robotomed;
+                color: $MLGreen;
+            }
+        }
+    }
+
+    .hero {
+        background: url('../images/moneylovers/bannerbg.jpg') no-repeat center center;
+        background-size: cover;
+
+        img {
+            @include media($tablet) {
+                max-width: 150px;
+            }
+
+            @include media($mobile) {
+                max-width: 100px;
+            }
+        }
+
+        h2 {
+            color: $white;
+        }
+
+        p {
+            color: $white;
+            font-size: 16px;
+
+            @include media($tablet) {
+                font-size: 15px;
+            }
+
+            @include media($mobile) {
+                font-size: 13px;
+            }
+        }
+
+        .col_bg {
+            background: url('../images/moneylovers/img3.png') no-repeat center center;
+            background-size: 70% 100%;
+            padding: 35px 10px 5px;
+
+            @include media($desktop) {
+                background-size: 70% 80%;
+                padding: 42px 10px 10px;
+            }
+
+            @include media($tablet) {
+                background-size: 80% 80%;
+                padding: 48px 10px 10px;
+            }
+
+            @include media($mobile) {
+                background-size: 50% 75%;
+            }
+
+            h3 {
+                font-size: 14px;
+                color: $MLGreen;
+
+                @include media($tablet) {
+                    font-size: 12px;
+                }
+
+                @include media($mobile) {
+                    font-size: 11px;
+                }
+            }
+
+            h2 {
+                font-size: 30px;
+
+                @include media($desktop) {
+                    font-size: 28px;
+                }
+
+                @include media($tablet) {
+                    font-size: 22px;
+                }
+
+                @include media($mobile) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .chat_section {
+        background: $white;
+
+        img {
+            @include media($tablet) {
+                max-width: 130px;
+            }
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50px;
+            right: -38px;
+
+            @include media($tablet) {
+                top: 30px;
+                right: -26px;
+            }
+
+            img {
+                @include media($tablet) {
+                    max-width: 55px;
+                }
+            }
+        }
+
+        h4 {
+            @include media($tablet) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .mail_section {
+        background: $MLLightGray;
+
+        ul {
+
+            li {
+                background: url('../images/moneylovers/icon-checkmark.jpg') no-repeat left top $lightGray;
+                margin-bottom: 10px;
+
+                p {
+                    margin: 0;
+                    padding: 4px 5px 4px 52px;
+                }
+            }
+        }
+    }
+
+    .payment_section {
+        background: $MLGreen;
+
+        h4 {
+            color: $white;
+            font-size: 24px;
+
+            @include media($mobile) {
+                font-size: 20px;
+            }
+
+            span {
+                @include robotobold;
+                color: $MLLightGray
+            }
+        }
+    }
+
+    .signup_section {
+        background: $white;
+
+        form {
+
+            p {
+                @include robotomed;
+                color: $MLGreen;
+                font-size: 18px;
+            }
+
+            label {
+                @include robotoreg;
+                font-size: 14px;
+            }
+
+            textarea {
+                border: 1px solid #a0a0a0;
+                border-radius: 6px;
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+            }
+
+            .rounded-pill {
+                background: $MLGreen;
+                color: $white;
+
+                &:hover {
+                    background: $MLDarkGreen;
+                    color: $white;
+                }
+            }
+
+            h5 {
+                font-size: 12px;
+                color: $pureBlack;
+
+                a {
+                    color: $MLGreen;
+                }
+            }
+        }
+    }
+
+    .contact_section {
+        background: $MLLightGray;
+    }
+
+    .contact_content {
+
+        h3 {
+            @include robotomed;
+            color: $MLGreen;
+            font-size: 18px;
+        }
+
+        p {
+            @include robotomed;
+            color: $white;
+            background: $MLGreen;
+            padding: 0 8px;
+            font-size: 14px;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+
+        a {
+            color: $pureBlack;
+        }
+
+        .contact_box {
+            background: $lightGray;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+        .media:first-child {
+            @include media($mobile) {
+                border-bottom: 4px solid $MLLightGray;
+            }
+        }
+    }
+
+    footer {
+        background: $pureBlack;
+
+        h4 {
+            @include robotobold;
+            font-size: 20px;
+            color: $MLGreen;
+
+            @include media($tablet) {
+                font-size: 18px;
+            }
+        }
+
+        a {
+            color: $MLLightGray;
+            font-size: 14px;
+
+            @include media($tablet) {
+                font-size: 12px;
+            }
+
+            &:hover {
+                color: $white;
+            }
+        }
+
+        p {
+            color: $MLLightGray;
+        }
+
+        h5 {
+            color: $MLGreen;
+            font-size: 14px;
+        }
+
+        ul {
+
+            li {
+                @include media($mobile) {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .success_section {
+        background: $MLLightGray;
+
+        .box {
+            background: #FFF6C2;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+    }
+
+    .terms_section {
+
+        p {
+            margin-bottom: 20px;
+
+            span {
+                @include robotobold;
+            }
+        }
+    }
+}

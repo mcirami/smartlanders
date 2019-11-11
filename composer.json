@@ -15,7 +15,8 @@
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
