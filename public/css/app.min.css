@@ -10662,14 +10662,25 @@ html,
 body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  min-height: 100%;
 }
 
 body {
   display: block;
   line-height: 2.4rem;
   height: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
 .page_wrapper {
@@ -10681,6 +10692,25 @@ body {
 @media screen and (max-width: 767px) {
   .page_wrapper {
     padding-top: 50px;
+  }
+}
+
+input[type=text],
+input[type=email],
+select {
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #a0a0a0;
+  padding: 20px 10px;
+  color: #4a4b4b;
+}
+
+@media screen and (max-width: 767px) {
+  input[type=text],
+  input[type=email],
+  select {
+    height: 35px;
+    padding: 15px 10px;
   }
 }
 
@@ -10696,7 +10726,7 @@ body {
   font-family: "Roboto-Medium";
   src: url("/fonts/roboto-medium-webfont.eot");
   src: url("/fonts/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto-medium-webfont.woff2") format("woff2"), url("/fonts/roboto-medium-webfont.woff") format("woff"), url("/fonts/roboto-medium-webfont.ttf") format("truetype"), url("/fonts/roboto-medium-webfont.svg#roboto-medium") format("svg");
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -10704,7 +10734,15 @@ body {
   font-family: "Roboto-Regular";
   src: url("/fonts/roboto-regular-webfont.eot");
   src: url("/fonts/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto-regular-webfont.woff2") format("woff2"), url("/fonts/roboto-regular-webfont.woff") format("woff"), url("/fonts/roboto-regular-webfont.ttf") format("truetype"), url("/fonts/roboto-regular-webfont.svg#roboto-regular") format("svg");
-  font-weight: bold;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("/fonts/roboto-light-webfont.eot");
+  src: url("/fonts/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/roboto-light-webfont.woff2") format("woff2"), url("/fonts/roboto-light-webfont.woff") format("woff"), url("/fonts/roboto-light-webfont.ttf") format("truetype"), url("/fonts/roboto-light-webfont.svg#roboto-bold") format("svg");
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -10733,29 +10771,29 @@ label {
   font-weight: 600;
 }
 
-.main_form h2 {
+.opt_form h2 {
   font-family: "Lato-Bold", sans-serif;
   color: #e23756;
 }
 
 @media screen and (max-width: 767px) {
-  .main_form h2 {
+  .opt_form h2 {
     font-size: 26px;
   }
 }
 
-.main_form h3 {
+.opt_form h3 {
   font-family: "Roboto-Medium", sans-serif;
   color: #4a4b4b;
 }
 
 @media screen and (max-width: 767px) {
-  .main_form h3 {
+  .opt_form h3 {
     font-size: 24px;
   }
 }
 
-.main_form .box {
+.opt_form .box {
   background: #fff;
   padding: 40px;
   box-shadow: 0 0 8px -1px #a19b9b;
@@ -10765,12 +10803,12 @@ label {
 }
 
 @media screen and (max-width: 767px) {
-  .main_form .box {
+  .opt_form .box {
     padding: 20px;
   }
 }
 
-.main_form button {
+.opt_form button {
   font-family: "Roboto-Bold", sans-serif;
   padding: 12px 60px;
   color: white;
@@ -10784,43 +10822,549 @@ label {
   width: 100%;
 }
 
-.main_form button:hover {
+.opt_form button:hover {
   background: #c40030;
 }
 
 @media screen and (max-width: 767px) {
-  .main_form button {
+  .opt_form button {
     font-size: 20px;
   }
 }
 
-.main_form label {
+.opt_form label {
   color: #4a4b4b;
   font-size: 20px;
 }
 
 @media screen and (max-width: 767px) {
-  .main_form label {
+  .opt_form label {
     font-size: 16px;
   }
 }
 
-.main_form input[type=text],
-.main_form input[type=email],
-.main_form select {
-  height: 40px;
-  border-radius: 6px;
-  border: 1px solid #a0a0a0;
-  padding: 20px 10px;
-  color: #4a4b4b;
+.money_lovers {
+  line-height: 1.8;
+}
+
+.money_lovers .rounded-pill {
+  background: #00994c;
+  font-size: 22px;
 }
 
 @media screen and (max-width: 767px) {
-  .main_form input[type=text],
-  .main_form input[type=email],
-  .main_form select {
-    height: 35px;
-    padding: 15px 10px;
+  .money_lovers .rounded-pill {
+    font-size: 18px;
   }
+}
+
+.money_lovers .rounded-pill:hover {
+  background: #028342;
+  color: #fff;
+}
+
+.money_lovers #loginModal .modal-content {
+  background: #00994c;
+  color: #fff;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.money_lovers #loginModal .modal-content .rounded-pill {
+  background: #000;
+  color: #fff;
+}
+
+.money_lovers #loginModal .close {
+  color: #fff;
+}
+
+.money_lovers .ml_page_wrap {
+  padding-top: 120px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .ml_page_wrap {
+    padding-top: 80px;
+  }
+}
+
+.money_lovers p {
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers p {
+    font-size: 14px;
+  }
+}
+
+.money_lovers header {
+  z-index: 999;
+  background: #000;
+}
+
+.money_lovers header .navbar {
+  background: #000;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers header .navbar .container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers header .navbar img {
+    max-width: 130px;
+  }
+}
+
+.money_lovers header .navbar .nav-link {
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers header .navbar .nav-link {
+    font-size: 15px;
+  }
+}
+
+.money_lovers header .navbar .nav-link:hover {
+  color: #00994c;
+}
+
+.money_lovers header .navbar .nav-link.nav-link.rounded-pill {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers header .navbar .nav-link.nav-link.rounded-pill {
+    font-size: 15px;
+  }
+}
+
+.money_lovers header .navbar .nav-link.nav-link.rounded-pill:hover {
+  color: #fff;
+}
+
+.money_lovers header .navbar .nav-link.active {
+  color: #00994c;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers header .navbar-nav {
+    border-top: 1px solid #2d2d2d;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers header .navbar-nav li {
+    border-bottom: 1px solid #2d2d2d;
+  }
+}
+
+.money_lovers header .mobile_menu_icon {
+  width: 30px;
+  height: 24px;
+  float: right;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.money_lovers header .mobile_menu_icon span {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: #00994c;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.money_lovers header .mobile_menu_icon span:nth-child(1) {
+  top: 1px;
+}
+
+.money_lovers header .mobile_menu_icon span:nth-child(2) {
+  top: 10px;
+}
+
+.money_lovers header .mobile_menu_icon span:nth-child(3) {
+  top: 19px;
+}
+
+.money_lovers .section h2 {
+  font-family: "Roboto-Light", sans-serif;
+  font-weight: 200;
+  font-size: 48px;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .section h2 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .section h2 {
+    font-size: 34px;
+  }
+}
+
+.money_lovers .section h3 {
+  font-family: "Roboto-Regular", sans-serif;
+  font-weight: 300;
+  font-size: 34px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .section h3 {
+    font-size: 26px;
+  }
+}
+
+.money_lovers .section h4 {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .section h4 {
+    font-size: 14px;
+  }
+}
+
+.money_lovers .section h4 span,
+.money_lovers .section h4 a {
+  font-family: "Roboto-Medium", sans-serif;
+  font-weight: 600;
+  color: #00994c;
+}
+
+.money_lovers .hero {
+  background: url(/images/bannerbg.jpg?7c05da136bff5740a1e3b893a4d43351) no-repeat center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .hero img {
+    max-width: 150px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .hero img {
+    max-width: 100px;
+  }
+}
+
+.money_lovers .hero h2 {
+  color: #fff;
+}
+
+.money_lovers .hero p {
+  color: #fff;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .hero p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .hero p {
+    font-size: 13px;
+  }
+}
+
+.money_lovers .hero .col_bg {
+  background: url(/images/img3.png?018cb409717d57edebdbeb0b1ae948ee) no-repeat center center;
+  background-size: 70% 100%;
+  padding: 35px 10px 5px;
+}
+
+@media screen and (max-width: 1199px) {
+  .money_lovers .hero .col_bg {
+    background-size: 70% 80%;
+    padding: 42px 10px 10px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .hero .col_bg {
+    background-size: 80% 80%;
+    padding: 48px 10px 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .hero .col_bg {
+    background-size: 50% 75%;
+  }
+}
+
+.money_lovers .hero .col_bg h3 {
+  font-size: 14px;
+  color: #00994c;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .hero .col_bg h3 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .hero .col_bg h3 {
+    font-size: 11px;
+  }
+}
+
+.money_lovers .hero .col_bg h2 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 1199px) {
+  .money_lovers .hero .col_bg h2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .hero .col_bg h2 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .hero .col_bg h2 {
+    font-size: 16px;
+  }
+}
+
+.money_lovers .chat_section {
+  background: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .chat_section img {
+    max-width: 130px;
+  }
+}
+
+.money_lovers .chat_section .arrow {
+  position: absolute;
+  top: 50px;
+  right: -38px;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .chat_section .arrow {
+    top: 30px;
+    right: -26px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .chat_section .arrow img {
+    max-width: 55px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers .chat_section h4 {
+    font-size: 16px;
+  }
+}
+
+.money_lovers .mail_section {
+  background: #f2efea;
+}
+
+.money_lovers .mail_section ul li {
+  background: url(/images/icon-checkmark.jpg?90543d2b8077c363ad6c8e67daa332b9) no-repeat left top #f8f8f8;
+  margin-bottom: 10px;
+}
+
+.money_lovers .mail_section ul li p {
+  margin: 0;
+  padding: 4px 5px 4px 52px;
+}
+
+.money_lovers .payment_section {
+  background: #00994c;
+}
+
+.money_lovers .payment_section h4 {
+  color: #fff;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .payment_section h4 {
+    font-size: 20px;
+  }
+}
+
+.money_lovers .payment_section h4 span {
+  font-family: "Roboto-Bold", sans-serif;
+  font-weight: 800;
+  color: #f2efea;
+}
+
+.money_lovers .signup_section {
+  background: #fff;
+}
+
+.money_lovers .signup_section form p {
+  font-family: "Roboto-Medium", sans-serif;
+  font-weight: 600;
+  color: #00994c;
+  font-size: 18px;
+}
+
+.money_lovers .signup_section form label {
+  font-family: "Roboto-Regular", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.money_lovers .signup_section form textarea {
+  border: 1px solid #a0a0a0;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.money_lovers .signup_section form .rounded-pill {
+  background: #00994c;
+  color: #fff;
+}
+
+.money_lovers .signup_section form .rounded-pill:hover {
+  background: #028342;
+  color: #fff;
+}
+
+.money_lovers .signup_section form h5 {
+  font-size: 12px;
+  color: #000;
+}
+
+.money_lovers .signup_section form h5 a {
+  color: #00994c;
+}
+
+.money_lovers .contact_section {
+  background: #f2efea;
+}
+
+.money_lovers .contact_content h3 {
+  font-family: "Roboto-Medium", sans-serif;
+  font-weight: 600;
+  color: #00994c;
+  font-size: 18px;
+}
+
+.money_lovers .contact_content p {
+  font-family: "Roboto-Medium", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  background: #00994c;
+  padding: 0 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.money_lovers .contact_content a {
+  color: #000;
+}
+
+.money_lovers .contact_content .contact_box {
+  background: #f8f8f8;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers .contact_content .media:first-child {
+    border-bottom: 4px solid #f2efea;
+  }
+}
+
+.money_lovers footer {
+  background: #000;
+}
+
+.money_lovers footer h4 {
+  font-family: "Roboto-Bold", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #00994c;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers footer h4 {
+    font-size: 18px;
+  }
+}
+
+.money_lovers footer a {
+  color: #f2efea;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 991px) {
+  .money_lovers footer a {
+    font-size: 12px;
+  }
+}
+
+.money_lovers footer a:hover {
+  color: #fff;
+}
+
+.money_lovers footer p {
+  color: #f2efea;
+}
+
+.money_lovers footer h5 {
+  color: #00994c;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+  .money_lovers footer ul li {
+    display: inline-block;
+  }
+}
+
+.money_lovers .success_section {
+  background: #f2efea;
+}
+
+.money_lovers .success_section .box {
+  background: #FFF6C2;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.money_lovers .terms_section p {
+  margin-bottom: 20px;
+}
+
+.money_lovers .terms_section p span {
+  font-family: "Roboto-Bold", sans-serif;
+  font-weight: 800;
 }
 

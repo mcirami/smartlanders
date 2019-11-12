@@ -2,9 +2,8 @@
 
 
 namespace App\Services;
-
-
 use App\Data;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Redis;
@@ -34,7 +33,7 @@ class DataPostService {
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function postOPTUser() {
+    public function postOPTSignup() {
 
         $siteURL = "https://onlineplaytime.com";
         $endpointUrl = "/api/signup?email=" . $this->email . "&period=0&clickid=" . $this->clickID . "&custid=&invoiceid=&cardhash=&LeadIPAddress=" . $this->userIP . "&h=1&affid=". $this->affID . "&firstname=" . $this->firstName . "&lastname=" . $this->lastName;
@@ -140,5 +139,108 @@ class DataPostService {
             'type' => 'relevance',
             'response' => $response->getBody()->getContents()
         ]);
+    }
+
+    public function postCakeSignup($request) {
+
+        $apiKey = 'qUK1FB8YLVud42uoD5COjsFYuMj03O';
+        $name = $request['company'];
+        $website = isset($request['website']) && $request['website'] != "" ? $request['website'] : " ";
+        $taxClass = $request['tax-class'];
+        $taxID = $request['ssn'];
+        $payment = $request['payment'];
+        $address = $request['address'];
+        $address2 = isset($request['address2']) && $request['address2'] != "" ? $request['address2'] : " ";
+        $city = $request['city'];
+        $state = $request['state'];
+        $zip = $request['postcode'];
+        $country = $request['country'];
+        $firstName = $request['firstName'];
+        $lastName = $request['lastName'];
+        $email = $request['email'];
+        $jobTitle = isset($request['jobTitle']) && $request['jobTitle'] != "" ? $request['jobTitle'] : " ";
+        $phone = $request['phone'];
+        $cell = isset($request['cell']) && $request['cell'] != "" ? $request['cell'] : " ";
+        $fax = isset($request['fax']) && $request['fax'] != "" ? $request['fax'] : " ";
+        $imService = $request['imService'];
+        $imName = $request ['imName'];
+        $model = $request['model'];
+        $category1 = $request['category1'];
+        $category2 = $request['category2'];
+        $comments = isset($request['comments']) && $request['comments'] != "" ? $request['comments'] : " ";
+
+        $endpointUrl = "https://affiliate.moneylovers.com/api/4/signup.asmx/Affiliate?";
+
+
+        /*api_key=" . $apiKey . "&affiliate_name=" . $name . "&account_status_id=1&affiliate_tier_id=0&hide_offers=False&website=" . $website . "&tax_class=" . $taxClass . "&ssn_tax_id=" . $taxID . "&vat_tax_required=False&swift_iban=null&payment_to=" .  $payment . "&payment_fee=-1&payment_min_threshold=100&currency_id=0&payment_setting_id=0&billing_cycle_id=0&payment_type_id=0&payment_type_info=null&address_street=" . $address . "&address_street2=" . $address2 . "&address_city=" . $city . "&address_state=" . $state . "&address_zip_code=" . $zip . "&address_country=" . $country . "&contact_first_name=" . $firstName . "&contact_middle_name=&contact_last_name=" . $lastName . "&contact_email_address=" . $email . "&contact_password=abc123&contact_title=" . $jobTitle . "&contact_phone_work=" . $phone . "&contact_phone_cell=" . $cell . "&contact_phone_fax=" . $fax . "&contact_im_service=" . $imService . "&contact_im_name=" . $imName . "&contact_timezone=EST&contact_language_id=1&media_type_ids=17&price_format_ids=" . $model . "&vertical_category_ids=" . $category1 . "," . $category2 . "&country_codes=&tag_ids=&date_added=" . date( "m/d/Y-h:i:sa" ) . "&signup_ip_address=" . $this->userIP . "&referral_affiliate_id=0&referral_notes=&terms_and_conditions_agreed=True&notes=" . $comments*/
+
+        $client = new Client();
+
+        try {
+            $response = $client->request( 'POST', $endpointUrl, [
+                'form_params' => [
+                    'api_key'                     => $apiKey,
+                    'affiliate_name'              => $name,
+                    'account_status_id'           => 1,
+                    'affiliate_tier_id'           => 1,
+                    'hide_offers'                 => "FALSE",
+                    'website'                     => $website,
+                    'tax_class'                   => $taxClass,
+                    'ssn_tax_id'                  => $taxID,
+                    'vat_tax_required'            => "FALSE",
+                    'swift_iban'                  => " ",
+                    'payment_to'                  => $payment,
+                    'payment_fee'                 => "0.00",
+                    'payment_min_threshold'       => "100.00",
+                    'currency_id'                 => 0,
+                    'payment_setting_id'          => 0,
+                    'billing_cycle_id'            => 0,
+                    'payment_type_id'             => 0,
+                    'payment_type_info'           => "",
+                    'address_street'              => $address,
+                    'address_street2'             => $address2,
+                    'address_city'                => $city,
+                    'address_state'               => $state,
+                    'address_zip_code'            => $zip,
+                    'address_country'             => $country,
+                    'contact_first_name'          => $firstName,
+                    'contact_middle_name'         => "",
+                    'contact_last_name'           => $lastName,
+                    'contact_email_address'       => $email,
+                    'contact_password'            => "abc123",
+                    'contact_title'               => $jobTitle,
+                    'contact_phone_work'          => $phone,
+                    'contact_phone_cell'          => $cell,
+                    'contact_phone_fax'           => $fax,
+                    'contact_im_service'          => $imService,
+                    'contact_im_name'             => $imName,
+                    'contact_timezone'            => "EST",
+                    'contact_language_id'         => 1,
+                    'media_type_ids'              => "15",
+                    'price_format_ids'            => $model,
+                    'vertical_category_ids'       => $category1,
+                    'country_codes'               => "US",
+                    'tag_ids'                     => 1,
+                    'date_added'                  => date( "m/d/Y h:i:s"),
+                    'signup_ip_address'           => $this->userIP,
+                    'referral_affiliate_id'       => 343,
+                    'referral_notes'              => " ",
+                    'terms_and_conditions_agreed' => "TRUE",
+                    'notes'                       => $comments
+                ]
+            ] );
+        } catch (RequestException $e) {
+            $message = $e->getResponse()->getBody()->getContents();
+
+            Data::create([
+                'type' => 'cakeSignup',
+                'response' => $message->message
+            ]);
+
+            return $message;
+        }
+
+        $xml = $response->getBody()->getContents();
+        return simplexml_load_string($xml);
     }
 }

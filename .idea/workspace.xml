@@ -2,18 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e733fe3-b4d5-4338-b65c-6c06343d578b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TemplateController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Template.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/elements/_money-lovers.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/templates/1/layouts/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/templates/2/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/templates/2/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/moneylovers/DataController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/moneylovers/MoneyLoversController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/moneylovers/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/optform/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/MLRegistrationRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/roboto-light-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/roboto-light-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/roboto-light-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/roboto-light-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/roboto-light-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icon-checkmark.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/layouts/nav-alt.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/layouts/nav.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/success.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/templates/money-lovers/terms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FormController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/elements/_form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/elements/_opt-form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/templates/1/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TemplateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TemplateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/OPTRegistrationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/DataPostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DataPostService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/elements/_money-lovers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/elements/_money-lovers.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/elements/_opt-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/elements/_opt-form.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/partials/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/partials/_colors.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/partials/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/partials/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/partials/_typography.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/templates/1/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/templates/opt-signup-form/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/templates/1/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/templates/opt-signup-form/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/templates/2/index.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/templates/2/layouts/header.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +60,19 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -142,17 +187,18 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/templates/2/layouts" />
-      <recent name="$PROJECT_DIR$/resources/views/templates/1/layouts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/resources/views/templates/1" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/resources/sass/elements" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/templates/2/layouts" />
+      <recent name="$PROJECT_DIR$/resources/views/templates/1/layouts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -185,7 +231,9 @@
       <updated>1571348921316</updated>
       <workItem from="1571348922726" duration="2086000" />
       <workItem from="1571415833608" duration="65139000" />
-      <workItem from="1572364763634" duration="538000" />
+      <workItem from="1572364763634" duration="6259000" />
+      <workItem from="1572379340760" duration="4604000" />
+      <workItem from="1572454038846" duration="99923000" />
     </task>
     <servers />
   </component>

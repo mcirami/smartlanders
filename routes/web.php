@@ -14,8 +14,14 @@
 Route::group(['middleware' => 'web'], function() {
     Route::get('/','TemplateController@index');
 
-    Route::post('opt-create','RegisterController@create');
-    Route::get('opt-data-post','DataController@postCreateOPT');
+    Route::post('opt-create','optform\RegisterController@create');
+    /*Route::get('opt-data-post','DataController@postCreateOPT');*/
+
+    Route::post('ml-create','moneylovers\RegisterController@create');
+    Route::get('ml-success','moneylovers\RegisterController@success')->name('ml-success');
+
+    Route::get('ml-terms','moneylovers\MoneyLoversController@terms')->name('ml-terms');
+    Route::post('ml-login','moneylovers\MoneyLoversController@login');
 });
 
 

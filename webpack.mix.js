@@ -15,6 +15,7 @@ mix.js(['resources/js/app.js', 'resources/js/bootstrap-formhelpers.min.js'], 'pu
     .sass('resources/sass/app.scss', 'public/css')
     .styles('resources/css/bootstrap-formhelpers.min.css', 'public/css/formhelpers.css')
     .minify('public/js/app.js')
-    .minify('public/css/app.css');
+    .minify('public/css/app.css')
+    .sourceMaps();
 
-mix.browserSync('optform.test');
+mix.browserSync('smartlanders.test');
