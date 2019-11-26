@@ -10714,6 +10714,12 @@ select {
   }
 }
 
+input[type=text].border_error,
+input[type=email].border_error,
+select.border_error {
+  border: 1px solid red;
+}
+
 @font-face {
   font-family: "Roboto-Bold";
   src: url("/fonts/roboto-bold-webfont.eot");

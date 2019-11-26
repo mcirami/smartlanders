@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\optform;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Services\DataPostService;
 use App\Http\Requests\OPTRegistrationRequest;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Redis;
 
 class RegisterController extends Controller
 {
@@ -17,29 +19,32 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function create(OPTRegistrationRequest $request, UserService $user, DataPostService $post) {
+    public function create(OPTRegistrationRequest $request, UserService $user, DataPostService $post, ApiController $apiType) {
 
-        $post->postSMS($request['phone']);
+        $apiRequested = Redis::get('api');
+        $apiValues = explode(',' , $apiRequested);
 
-        $optResponse = $post->postOPTSignup();
+        if (count($apiValues) > 1) {
 
-        if ( $optResponse[0] == '1' ) {
+            foreach($apiValues as $apiValue) {
 
-            $user->store($request);
-            $post->postRelevance();
+                $apiName = $apiType->getApiName($apiValue);
 
-            return redirect($optResponse[1]);
+                $response = $post->$apiName();
 
-        } elseif ( $optResponse[0] == '5' ) {
+                if ( strpos( $response, "Error" ) !== false ) {
+                    return redirect()->back()->withInput()->withErrors( [ 'fields' => $response ] );
+                    break;
+                }
+            }
 
-            return redirect()->back()->withInput()->withErrors(['email' => 'Email is already being use']);
+            $user->store( $request );
+            return redirect( $response );
 
-        } elseif ( $optResponse[0] == '0' ) {
+        } else {
+            $apiName = $apiType->getApiName($apiValues[0]);
 
-            return redirect()->back()->withInput()->withErrors(['fields' => 'The fields you entered are invalid']);
-
+            $response = $post->$apiName();
         }
-
-        return redirect()->back();
     }
 }
