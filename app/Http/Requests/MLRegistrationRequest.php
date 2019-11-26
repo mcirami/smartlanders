@@ -16,6 +16,11 @@ class MLRegistrationRequest extends FormRequest
         return true;
     }
 
+    /****
+     * @var string
+     */
+    protected $redirect = "/?t=2&a=4#signup";
+
     /**
      * Get the validation rules that apply to the request.
      *

@@ -24,42 +24,73 @@ class DataPostService {
         $this->email = $request['email'];
         $this->firstName = $request['first_name'];
         $this->lastName = $request['last_name'];
+        $this->phone = $request['phone'];
         $this->clickID = Redis::get('clickid');
         $this->affID = Redis::get('affid');
         $this->userIP = Redis::get('ip');
     }
 
     /**
-     * @return array
+     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function postOPTSignup() {
 
         $siteURL = "https://onlineplaytime.com";
-        $endpointUrl = "/api/signup?email=" . $this->email . "&period=0&clickid=" . $this->clickID . "&custid=&invoiceid=&cardhash=&LeadIPAddress=" . $this->userIP . "&h=1&affid=". $this->affID . "&firstname=" . $this->firstName . "&lastname=" . $this->lastName;
+        $endpointUrl = "/api/signup?email=" . $this->email . "&period=0&clickid=" . $this->clickID . "&custid=&invoiceid=&cardhash=&LeadIPAddress=" . $this->userIP . "&h=1&affid=". $this->affID . "&firstname=" . $this->firstName . "&lastname=" . $this->lastName . "&phone=" . $this->phone;
 
         $client = new Client();
-        $response = $client->request('GET', $siteURL . $endpointUrl, [
-            'form_params' => [
-                'email'          => $this->email,
-                'period'         => 0,
-                'clickid'        => $this->clickID,
-                'LeadIPAddress'  => $this->userIP,
-                'h'              => 1,
-                'affid'          => $this->affID,
-                'firstname'      => $this->firstName,
-                'lastname'       => $this->lastName
-            ]
-        ]);
 
-        $response =  $response->getBody()->getContents();
+        try {
+            $response = $client->request( 'GET', $siteURL . $endpointUrl, [
+                'form_params' => [
+                    'email'         => $this->email,
+                    'period'        => 0,
+                    'clickid'       => $this->clickID,
+                    'LeadIPAddress' => $this->userIP,
+                    'h'             => 1,
+                    'affid'         => $this->affID,
+                    'firstname'     => $this->firstName,
+                    'lastname'      => $this->lastName
+                ]
+            ] );
 
-        Data::create([
-            'type' => 'opt signup',
-            'response' => $response
-        ]);
+            $response = $response->getBody()->getContents();
 
-        return explode( "|", $response );
+            Data::create( [
+                'type'     => 'opt signup',
+                'response' => $response
+            ] );
+
+            $output = explode( "|", $response );
+
+            if ( $output[0] == '1' ) {
+
+                return $output[1];
+
+            } elseif ( $output[0] == '5' ) {
+
+                return "Error: Email is already being use";
+
+            } elseif ( $output[0] == '0' ) {
+
+                return "Error: The fields you entered are invalid";
+
+            } elseif ( $output[0] == '6' ) {
+
+                return "Error: Username is already in use";
+            }
+
+        } catch (RequestException $e) {
+            $response = $e->getResponse()->getBody()->getContents();
+
+            Data::create([
+                'type' => 'optsignup',
+                'response' => $response->message
+            ]);
+
+            return "error: " . $response->message;
+        }
     }
 
     /**
@@ -68,8 +99,9 @@ class DataPostService {
      * @return void
      *
      */
-    public function postSMS($phoneRequest) {
-        $phone =  preg_replace('/\s+/', '', $phoneRequest);
+    public function postSMS() {
+
+        $phone =  preg_replace('/\s+/', '', $this->phone);
         $search = array('+1', '(', ')', '-');
         $replace = array('', '', '', '');
         $phone = str_replace($search, $replace, $phone);
@@ -90,6 +122,8 @@ class DataPostService {
                 'response' => $response->getBody()->getContents()
             ]);
 
+            return;
+
         } catch (RequestException $e) {
 
             if ($e->getResponse()->getStatusCode() == '400') {
@@ -102,9 +136,16 @@ class DataPostService {
                        'response' => $message['success'] . " " . $message['error']
                    ]);
 
+                   return;
+
                } else {
 
-                   return redirect()->back()->withInput()->withErrors(['phone' => $message['error']]);
+                   Data::create([
+                       'type' => 'sms',
+                       'response' => $message['error']
+                   ]);
+
+                   return;
                }
             }
         }
@@ -124,21 +165,36 @@ class DataPostService {
         $endpointUrl = "http://api.rrddm.com/DDM/Import.cfc?method=submitRecord&ClientID=175&DataSourceID=17164&Token=C7F0T0K7Y9&TokenPassword=Z5F6D5&EmailAddress=" . $this->email . "&LeadDate=" . $leadDate . "&LeadURL=" . $leadURL . "&LeadIPAddress=" . $userIP . "&FirstName=" . $this->firstName . "&LastName=" . $this->lastName;
 
         $client = new Client();
-        $response = $client->request('POST', $endpointUrl, [
-            'form_params' => [
-                'email'         => $this->email,
-                'FirstName'     => $this->firstName,
-                'LastName'      => $this->lastName,
-                'LeadIPAddress' => $userIP,
-                'LeadDate'      => $leadDate,
-                'LeadURL'       => $leadURL
-            ]
-        ]);
 
-        Data::create([
-            'type' => 'relevance',
-            'response' => $response->getBody()->getContents()
-        ]);
+        try {
+            $response = $client->request( 'POST', $endpointUrl, [
+                'form_params' => [
+                    'email'         => $this->email,
+                    'FirstName'     => $this->firstName,
+                    'LastName'      => $this->lastName,
+                    'LeadIPAddress' => $userIP,
+                    'LeadDate'      => $leadDate,
+                    'LeadURL'       => $leadURL
+                ]
+            ] );
+
+            Data::create( [
+                'type'     => 'relevance',
+                'response' => $response->getBody()->getContents()
+            ] );
+
+            return;
+
+        } catch (RequestException $e) {
+            $response = $e->getResponse()->getBody()->getContents();
+
+            Data::create([
+                'type' => 'relevance',
+                'response' => $response->message
+            ]);
+
+            return;
+        }
     }
 
     public function postCakeSignup($request) {
@@ -229,18 +285,26 @@ class DataPostService {
                     'notes'                       => $comments
                 ]
             ] );
+
+            $xmlConvert = simplexml_load_string($response->getBody()->getContents());
+            $output = json_decode(json_encode($xmlConvert), true);
+
+            if ($output['success'] === 'false') {
+                return $output['message'];
+            } elseif($output['success'] === 'true') {
+                return 'true';
+            }
+
         } catch (RequestException $e) {
-            $message = $e->getResponse()->getBody()->getContents();
+            $output = $e->getResponse()->getBody()->getContents();
 
             Data::create([
                 'type' => 'cakeSignup',
-                'response' => $message->message
+                'response' => $output->message
             ]);
 
-            return $message;
+            return $output->message;
         }
 
-        $xml = $response->getBody()->getContents();
-        return simplexml_load_string($xml);
     }
 }

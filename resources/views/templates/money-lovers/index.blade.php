@@ -206,17 +206,39 @@
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="company">Company Name <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="company" name="company" value="{{ old('company') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('company')) border_error @endif" id="company" name="company" value="{{ old('company') }}" required>
+
+                                    @if ($errors->has('company'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('company') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="city">City <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('city')) border_error @endif" id="city" name="city" value="{{ old('city') }}" required>
+                                    @if ($errors->has('city'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('city') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="address">Address <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('address')) border_error @endif" id="address" name="address" value="{{ old('address') }}" required>
+                                    @if ($errors->has('address'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('address') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="address2">Address 2</label>
@@ -226,18 +248,39 @@
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="state">State <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="state" name="state" value="{{ old('state') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('state')) border_error @endif" id="state" name="state" value="{{ old('state') }}" required>
+                                    @if ($errors->has('state'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('state') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="postcode">Zip/Postcode <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="postcode" name="postcode" value="{{ old('postcode') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('postcode')) border_error @endif" id="postcode" name="postcode" value="{{ old('postcode') }}" required>
+                                    @if ($errors->has('postcode'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('postcode') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="country">Country <sup>*</sup></label>
-                                    <select class="bfh-countries w-100 bg-white" data-country="US" id="country" name="country" required></select>
+                                    <select class="bfh-countries w-100 bg-white @if ($errors->has('country')) border_error @endif" data-country="US" id="country" name="country" required></select>
+                                    @if ($errors->has('country'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('country') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="website">Corporate Website</label>
@@ -297,17 +340,39 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="phone">Work Phone <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                                    <input type="text" class="form-control  @if ($errors->has('phone')) border_error @endif" id="phone" name="phone" value="{{ old('phone') }}" required>
+
+                                    @if ($errors->has('phone'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('phone') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">First Name <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{ old('firstName') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('firstName')) border_error @endif" id="firstName" name="firstName" value="{{ old('firstName') }}" required>
+                                    @if ($errors->has('firstName'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('firstName') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastName">Last Name <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{ old('lastName') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('lastName')) border_error @endif" id="lastName" name="lastName" value="{{ old('lastName') }}" required>
+                                    @if ($errors->has('lastName'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('lastName') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row pl-4 pr-4">
@@ -324,13 +389,27 @@
                             <div class="form-row pl-4 pr-4">
                                 <div class="form-group col-md-6">
                                     <label for="email">Email <sup>*</sup></label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" class="form-control @if ($errors->has('email')) border_error @endif" id="email" name="email" value="{{ old('email') }}" required>
+                                    @if ($errors->has('email'))
+                                        <span class="row">
+                                            <span class="col-12 text-danger">
+                                                <small><strong>{{ $errors->first('email') }}</strong></small>
+                                            </span>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="im">IM <sup>*</sup></label>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-4 mb-md-0">
-                                            <input type="text" class="form-control" id="imNme" name="imName" value="{{ old('imName') }}" required>
+                                            <input type="text" class="form-control @if ($errors->has('imName')) border_error @endif" id="imNme" name="imName" value="{{ old('imName') }}" required>
+                                            @if ($errors->has('imName'))
+                                                <span class="row">
+                                                    <span class="col-12 text-danger">
+                                                        <small><strong>{{ $errors->first('imName') }}</strong></small>
+                                                    </span>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="col-md-6">
                                             <select class="w-100 bg-white" id="imService" name="imService">
@@ -362,7 +441,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="ssn">SSN/Tax ID <sup>*</sup></label>
-                                    <input type="text" class="form-control" id="ssn" name="ssn" value="{{ old('ssn') }}" required>
+                                    <input type="text" class="form-control @if ($errors->has('ssn')) border_error @endif" id="ssn" name="ssn" value="{{ old('ssn') }}" required>
+                                    @if ($errors->has('ssn'))
+                                        <span class="row">
+                                                    <span class="col-12 text-danger">
+                                                        <small><strong>{{ $errors->first('ssn') }}</strong></small>
+                                                    </span>
+                                                </span>
+                                    @endif
                                 </div>
                             </div><!-- marketing information -->
 

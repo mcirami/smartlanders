@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\moneylovers;
 
+use App\Http\Controllers\ApiController;
 use App\Services\DataPostService;
 use App\Http\Requests\MLRegistrationRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redis;
 
 class RegisterController extends Controller
 {
@@ -15,16 +17,29 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function create(MLRegistrationRequest $request, DataPostService $post) {
+    public function create(MLRegistrationRequest $request, DataPostService $post, ApiController $apiType) {
 
-        $response = $post->postCakeSignup($request);
+        $apiRequested = Redis::get('api');
+        $apiValues = explode(',' , $apiRequested);
 
-        if ($response->success == 'false') {
-            return redirect()->to(url()->previous() . '#signup')->withInput()->withErrors(['fields' => $response->message]);
-        } elseif($response->success == 'true') {
-            return redirect('/ml-success?t=2');
+        if (count($apiValues) > 1) {
+
+            foreach($apiValues as $apiValue) {
+                $apiName = $apiType->getApiName($apiValue);
+
+                $post->$apiName($request);
+            }
+
         } else {
-            return redirect()->to(url()->previous() . '#signup')->withInput()->withErrors(['fields' => $response]);
+            $apiName = $apiType->getApiName($apiValues[0]);
+
+            $response = $post->$apiName($request);
+
+            if($response == "true") {
+                return redirect('/ml-success?t=2&a=4');
+            } else {
+                return redirect()->to(url()->previous() . '#signup')->withInput()->withErrors(['fields' => $response]);
+            }
         }
     }
 

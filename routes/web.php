@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function() {
-    Route::get('/','TemplateController@index');
+    Route::get('/','IndexController@index');
 
     Route::post('opt-create','optform\RegisterController@create');
     /*Route::get('opt-data-post','DataController@postCreateOPT');*/
