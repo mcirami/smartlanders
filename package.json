@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "bourbon": "^6.0.0",
-        "bourbon-neat": "^4.0.0"
+        "bourbon-neat": "^4.0.0",
+        "serialize-javascript": "^2.1.2"
     }
 }
